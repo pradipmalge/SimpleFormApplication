@@ -1,0 +1,64 @@
+
+<div class="row">
+  <div class="col-xs-12">
+
+    <div class="card">
+      <div class="card-header">
+        <h3>User Form</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmit()">
+
+          <div class="col-sm-5 form-group">
+            <label for="first-name">First Name </label>
+            <input type="text"
+                   id="first-name"
+                   class="form-control"
+                   formControlName="firstname">
+            <span class="text-danger"
+                  *ngIf="(userDetailsFormControl.firstname.touched) && userDetailsFormControl.firstname.errors?.required">
+              First name is required
+            </span>
+            <span class="text-danger"
+                  *ngIf="(userDetailsFormControl.firstname.touched) && userDetailsFormControl.firstname.errors?.minlength">
+              First name should be atleast six characters in length.
+            </span>
+          </div>
+
+          <div class="col-sm-5 form-group">
+            <label for="last-name">Last Name </label>
+            <input type="text"
+                   id="last-name"
+                   class="form-control"
+                   formControlName="lastname">
+
+            <span class="text-danger"
+                  *ngIf="(userDetailsFormControl.lastname.touched) && userDetailsFormControl.lastname.errors?.required">
+              Last name is required
+            </span>
+            <span class="text-danger"
+                  *ngIf="(userDetailsFormControl.lastname.touched) && userDetailsFormControl.lastname.errors?.minlength">
+              Last name should be atleast six characters in length.
+            </span>
+          </div>
+
+          <div class="col-sm-5 form-group">
+
+            <button class="btn btn-success"
+                    type="submit">
+              Submit
+            </button>
+
+            <button class="btn btn-primary" (click)="onClear()" type="button">Clear</button>
+
+            </div>
+
+          <div class="row">
+              <label>{{status}}</label>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+    </div>
